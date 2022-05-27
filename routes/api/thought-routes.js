@@ -11,10 +11,14 @@ const {
 const { route } = require('./user-routes');
 
 // /api/thoughts
-router.route('/').get(getAllThoughts);
+router
+    .route('/')
+    .get(getAllThoughts);
 
 // /api/thoughts/<userId>
-router.route('/:userId').post(addThought);
+router
+    .route('/:userId')
+    .post(addThought);
 
 // /api/thoughts/<thoughtId>
 router

@@ -30,7 +30,7 @@ const reactionSchema = new Schema(
   }
 );
 
-const SchemingThoughts = new Schema(
+const schemingThoughts = new Schema(
   {
     thoughtText: {
       type: String,
@@ -58,10 +58,10 @@ const SchemingThoughts = new Schema(
 );
 
 // Get count on reactions and replies
-SchemingThoughts.virtual("reactionCount").get(function () {
+schemingThoughts.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-const Thought = model("Thought", SchemingThoughts);
+const Thought = model("Thought", schemingThoughts);
 
 module.exports = Thought;
