@@ -36,12 +36,12 @@ const controlYourThoughts = {
       });
   },
   // Create Thought
-  createThought({ body }, res) {
+  createThought({ params, body }, res) {
     console.log(body);
     Thought.create(body)
       .then((thoughtData) => {
         return User.findOneAndUpdate(
-          { _id: body.userId },
+          { _id: params.userId },
           { $push: { thoughts: thoughtData._id } },
           { new: true }
         );
