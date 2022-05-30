@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-// User Schema
-const schemingUsers = new Schema(
+// user schema
+const UserSchema = new Schema(
     {
         username: {
             type: String,
@@ -13,7 +13,6 @@ const schemingUsers = new Schema(
             type: String,
             unique: true,
             required: true,
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
         thoughts: [
             {
@@ -38,10 +37,10 @@ const schemingUsers = new Schema(
 );
 
 // create the User model using the UserSchema
-const User = model('User', schemingUsers);
+const User = model('User', UserSchema);
 
 // get total count of friends
-schemingUsers.virtual('friendCount').get(function () {
+UserSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 
